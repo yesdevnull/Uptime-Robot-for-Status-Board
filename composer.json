@@ -1,6 +1,11 @@
 {
   "name": "yesdevnull/uptime-robot-for-status-board",
   "description": "Show your Uptime Robot stats in Status Board by Panic",
+  "version": "1.0.0",
+  "keywords": [
+    "uptime robot",
+    "status board"
+  ],
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [

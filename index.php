@@ -6,8 +6,9 @@ Dotenv::load(__DIR__);
 $uptimeRobotApiKey = getenv('UR_API_KEY');
 $use24HTime = getenv('USE_24H_TIME') ?: false;
 
-use GuzzleHttp\Client;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ParseException;
 
 $client = new Client(
     [
@@ -42,7 +43,23 @@ $uptimeMonitors = $client->get(
     ]
 );
 
-$uptimeMonitors = $uptimeMonitors->json();
+try {
+    $uptimeMonitors = $uptimeMonitors->json();
+} catch (ParseException $e) {
+    echo json_encode(
+        [
+            'graph' => [
+                'title' => 'Uptime Robot Statistics',
+                'error' => [
+                    'message' => 'Unable to read Uptime Robot API Response',
+                    'detail' => 'API Error reported: ' . $e->getMessage()
+                ]
+            ]
+        ]
+    );
+
+    exit;
+}
 
 foreach ($uptimeMonitors['monitors']['monitor'] as $monitor) {
     for ($i = 0; $i <= count($monitor['responsetime']); $i++) {
