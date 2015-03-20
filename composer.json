@@ -1,7 +1,7 @@
 {
   "name": "yesdevnull/uptime-robot-for-status-board",
   "description": "Show your Uptime Robot stats in Status Board by Panic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "uptime robot",
     "status board"

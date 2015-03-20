@@ -22,6 +22,19 @@ $client = new Client(
     ]
 );
 
+$graph = [
+    'graph' => [
+        'title' => 'Uptime Robot Statistics',
+        'yAxis' => [
+            'scaleTo' => 1,
+            'units' => [
+                'suffix' => 'ms'
+            ]
+        ],
+        'refreshEveryNSeconds' => 300,
+    ]
+];
+
 $monitorIds = [];
 
 for ($i = 1; $i <= 10; $i++) {
@@ -46,19 +59,12 @@ $uptimeMonitors = $client->get(
 try {
     $uptimeMonitors = $uptimeMonitors->json();
 } catch (ParseException $e) {
-    echo json_encode(
-        [
-            'graph' => [
-                'title' => 'Uptime Robot Statistics',
-                'error' => [
-                    'message' => 'Unable to read Uptime Robot API Response',
-                    'detail' => 'API Error reported: ' . $e->getMessage()
-                ]
-            ]
-        ]
-    );
+    $graph['graph']['error'] = [
+        'message' => 'Unable to read Uptime Robot API Response',
+        'detail' => 'API Error reported: ' . $e->getMessage()
+    ];
 
-    exit;
+    exit(json_encode($graph));
 }
 
 foreach ($uptimeMonitors['monitors']['monitor'] as $monitor) {
@@ -90,18 +96,6 @@ foreach ($uptimeMonitors['monitors']['monitor'] as $monitor) {
     unset($response);
 }
 
-$graph = [
-    'graph' => [
-        'title' => 'Uptime Robot Statistics',
-        'yAxis' => [
-            'scaleTo' => 1,
-            'units' => [
-                'suffix' => 'ms'
-            ]
-        ],
-        'refreshEveryNSeconds' => 300,
-        'datasequences' => $graphs
-    ]
-];
+$graph['graph']['datasequences'] = $graphs;
 
-echo json_encode($graph);
+exit(json_encode($graph));

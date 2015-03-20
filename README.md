@@ -39,7 +39,7 @@ MONITOR_10_ID=
 
 Copy and paste your API key to `UR_API_KEY` so it looks like `UR_API_KEY=<your api key here>`.
 
-If you want to display the graph in 24 hour time, keep the var `USE_24H_TIME=true`, otherwise set it to `false` or remove it to use 12 hour time with the meridiem.
+If you want to display the graph in 24 hour time, keep the var `USE_24H_TIME=true`, otherwise remove it to use 12 hour time with the meridiem.
 
 Finally, you'll need the IDs for up to 10 monitors.  If you have less than 10 monitors you want to graph, just leave them blank (or remove them.)  To get the ID for a monitor, click on the monitor in the [Uptime Robot Dashboard](https://uptimerobot.com/dashboard.php#mainDashboard).  You'll then see the ID in the URL bar of your web browser, it'll look something like this: `https://uptimerobot.com/dashboard.php#XXXXXXXXX`.  Copy the ID and paste it into your `.env` file.
 
