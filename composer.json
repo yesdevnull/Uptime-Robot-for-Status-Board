@@ -10,7 +10,12 @@
     }
   ],
   "require": {
+    "php": ">=5.5.0",
     "guzzlehttp/guzzle": "~5.0",
-    "vlucas/phpdotenv": "~1.0"
+    "vlucas/phpdotenv": "~1.0",
+    "nesbot/carbon": "~1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "~2.3"
   }
 }
