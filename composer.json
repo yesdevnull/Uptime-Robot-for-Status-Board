@@ -1,0 +1,16 @@
+{
+  "name": "yesdevnull/uptime-robot-for-status-board",
+  "description": "Show your Uptime Robot stats in Status Board by Panic",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dan Barrett",
+      "email": "dan@danbarrett.com.au"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "~5.0",
+    "vlucas/phpdotenv": "~1.0"
+  }
+}
