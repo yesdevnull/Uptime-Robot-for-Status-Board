@@ -72,7 +72,7 @@ foreach ($uptimeMonitors['monitors']['monitor'] as $monitor) {
             if ($use24HTime) {
                 $timestamp = $timestamp->format('H:i');
             } else {
-                $timestamp = $timestamp->format('h:i');
+                $timestamp = $timestamp->format('h:i A');
             }
 
             $response[] = [
